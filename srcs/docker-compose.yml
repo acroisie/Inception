@@ -4,27 +4,28 @@ services:
 
   mariadb:
     container_name: mariadb
-    restart:  always
-    build:
-      context:  ./requirements/mariadb/
+    # restart:  always
+    build: requirements/mariadb/
+    image: mariadb
     networks:
       - inception
 
   nginx:
     container_name: nginx
-    restart:  always
-    build:
-      context:  ./requirements/nginx/
+    # restart:  always
+    build: requirements/nginx/
+    image: nginx
     networks:
       - inception
 
   wordpress:
     container_name: wordpress
-    restart:  always
-    build:
-      context:  ./requirements/wordpress/
+    # restart:  always
+    build: requirements/wordpress/
+    image: wordpress
     networks:
       - inception
+    
 
 networks:
   inception:

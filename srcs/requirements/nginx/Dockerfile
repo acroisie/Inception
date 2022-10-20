@@ -6,4 +6,4 @@ RUN		apt-get update -y \
 
 # EXPOSE	443 9000
 
-CMD		["nginx", "-g", "daemon off;"]
+# CMD		["nginx", "-g", "daemon off;"]
