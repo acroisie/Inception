@@ -3,17 +3,17 @@ version: "3.8"
 services:
   mariadb:
     build:
-      context: ./requirements/mariadb/Dockerfile
+      context: ./requirements/mariadb/
     networks:
       - inception
   nginx:
     build:
-      context: ./requirements/nginx/Dockerfile
+      context: ./requirements/nginx/
     networks:
       - inception
   wordpress:
     build:
-      context: ./requirements/wordpress/Dockerfile
+      context: ./requirements/wordpress/
     networks:
       - inception
 networks:
