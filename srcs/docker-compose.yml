@@ -12,11 +12,11 @@ services:
     image: mariadb
     container_name: mariadb
     build: requirements/mariadb/
-    args:
-      - MYSQL_ROOT_PASSWORD
-      - MYSQL_DATABASE
-      - MYSQL_USER
-      - MYSQL_PASSWORD
+    # args:
+    #   - MYSQL_ROOT_PASSWORD
+    #   - MYSQL_DATABASE
+    #   - MYSQL_USER
+    #   - MYSQL_PASSWORD
     volumes:
       - DB:/var/lib/mysql
     networks:

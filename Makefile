@@ -1,7 +1,6 @@
 NAME = Inception
 
 all : volumes
-	# docker system prune -af --volumes
 	docker-compose --project-directory srcs up -d --build
 
 down :
@@ -13,3 +12,12 @@ mariadb :
 volumes:
 	mkdir -p ~/home/$(USER)/data/WordPress
 	mkdir -p ~/home/$(USER)/data/DB
+
+clean: down
+	docker system prune -af
+
+fclean: down
+	docker system prune -af --volumes
+	rm -rf ~/home/$(USER)/data/*
+
+re: fclean all
