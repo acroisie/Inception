@@ -1,14 +1,18 @@
 version:  "3.9"
 
-# ----------Network/Volumes--------- #
 networks:
+# --------------Network------------- #
   inception:
 
 volumes:
+# --------------Volumes------------- #
   DB:
     name: DB
-  Wordpress:
-    name: Wordpress
+    driver: local
+    driver_opts:
+      type: none
+      device: '/Users/arnaud/home/${USER}/data/DB'
+      o: bind
 
 services:
 # --------------MariaDB------------- #
@@ -46,11 +50,6 @@ services:
     container_name: wordpress
     build:
       context: ./requirements/wordpress/
-      args:
-        - MYSQL_ROOT_PASSWORD
-        - MYSQL_DATABASE
-        - MYSQL_USER
-        - MYSQL_PASSWORD
     networks:
       - inception
     ports:
