@@ -21,3 +21,5 @@ fclean: down
 	rm -rf ~/home/$(USER)/data/*
 
 re: fclean all
+
+.PHONY:	all down mariadb volumes clean fclean re

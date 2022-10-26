@@ -1,42 +1,59 @@
 version:  "3.9"
 
+# ----------Network/Volumes--------- #
 networks:
   inception:
 
 volumes:
   DB:
     name: DB
+  Wordpress:
+    name: Wordpress
 
 services:
+# --------------MariaDB------------- #
   mariadb:
-    image: mariadb
+    image: mariadb:myVersion
     container_name: mariadb
-    build: requirements/mariadb/
-    # args:
-    #   - MYSQL_ROOT_PASSWORD
-    #   - MYSQL_DATABASE
-    #   - MYSQL_USER
-    #   - MYSQL_PASSWORD
+    build:
+      context: ./requirements/mariadb
+      args:
+        - MYSQL_ROOT_PASSWORD
+        - MYSQL_DATABASE
+        - MYSQL_USER
+        - MYSQL_PASSWORD
     volumes:
       - DB:/var/lib/mysql
     networks:
       - inception
     ports:
       - 3306
-    # restart:  always
+    restart:  always
 
+# ---------------NginX-------------- #
   nginx:
-    image: nginx
+    image: nginx:myVersion
     container_name: nginx
-    build: requirements/nginx/
+    build:
+      context: ./requirements/nginx
     networks:
       - inception
-    # restart:  always
+    restart:  always
 
+# -------------Wordpress------------ #
   wordpress:
-    image: wordpress
+    image: wordpress:myVersion
     container_name: wordpress
-    build: requirements/wordpress/
+    build:
+      context: ./requirements/wordpress/
+      args:
+        - MYSQL_ROOT_PASSWORD
+        - MYSQL_DATABASE
+        - MYSQL_USER
+        - MYSQL_PASSWORD
     networks:
       - inception
+    ports:
+      - 3306
+      - 9000
     # restart:  always
