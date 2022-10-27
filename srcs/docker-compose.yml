@@ -55,4 +55,6 @@ services:
     ports:
       - 3306
       - 9000
+    depends_on:
+      - mariadb
     # restart:  always
