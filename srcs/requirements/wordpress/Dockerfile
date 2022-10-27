@@ -7,6 +7,8 @@ RUN		apt-get update -y \
 
 ADD		https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar  /usr/local/bin/wp
 
+COPY	./conf/www.conf /etc/php/7.3/fpm/pool.d
+
 RUN 	chmod +x /usr/local/bin/wp \
 		&& mkdir -p /var/www/html/wordpress \
 		&& cd /var/www/html/wordpress \
