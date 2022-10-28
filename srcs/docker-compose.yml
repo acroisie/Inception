@@ -50,6 +50,8 @@ services:
     container_name: wordpress
     build:
       context: ./requirements/wordpress/
+    env_file:
+      - .env
     networks:
       - inception
     ports:
