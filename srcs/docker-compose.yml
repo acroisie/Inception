@@ -50,8 +50,11 @@ services:
     container_name: wordpress
     build:
       context: ./requirements/wordpress/
-    env_file:
-      - .env
+      args:
+        - MYSQL_DATABASE
+        - MYSQL_USER
+        - MYSQL_PASSWORD
+        - MYSQL_HOST
     networks:
       - inception
     ports:
