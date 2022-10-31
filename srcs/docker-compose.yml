@@ -14,6 +14,14 @@ volumes:
       device: '/Users/arnaud/home/${USER}/data/DB'
       o: bind
 
+  WordPress:
+    name: WordPress
+    driver: local
+    driver_opts:
+      type: none
+      device: '/Users/arnaud/home/${USER}/data/WordPress'
+      o: bind
+
 services:
 # --------------MariaDB------------- #
   mariadb:
@@ -42,6 +50,9 @@ services:
       context: ./requirements/nginx
     networks:
       - inception
+    ports:
+      - 443
+      - 9000
     restart:  always
 
 # -------------Wordpress------------ #
@@ -55,6 +66,8 @@ services:
         - MYSQL_USER
         - MYSQL_PASSWORD
         - MYSQL_HOST
+    volumes:
+      - WordPress:/var/www/html
     networks:
       - inception
     ports:
