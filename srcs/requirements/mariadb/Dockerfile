@@ -18,4 +18,4 @@ RUN			service mysql start \
 
 EXPOSE		3306
 
-ENTRYPOINT	["mysqld"]
+ENTRYPOINT	["mysqld", "--bind-address=0.0.0.0"]

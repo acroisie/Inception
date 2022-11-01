@@ -8,7 +8,8 @@ ARG		MYSQL_HOST
 RUN		apt-get update -y \
 		&& apt-get upgrade -y \
 		&& apt-get install wget -y \
-		&& apt-get install php-fpm -y
+		&& apt-get install php-fpm -y \
+		&& apt-get install php-mysql -y
 
 COPY	./conf/www.conf /etc/php/7.3/fpm/pool.d
 

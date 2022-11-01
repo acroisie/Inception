@@ -54,6 +54,8 @@ services:
       - 443
       - 9000
     restart:  always
+    depends_on:
+      - wordpress
 
 # -------------Wordpress------------ #
   wordpress:
