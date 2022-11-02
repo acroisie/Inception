@@ -5,11 +5,12 @@ RUN		apt-get update -y \
 		&& apt-get install nginx -y \
 		&& apt-get install -y openssl
 
-RUN		mkdir -p /etc/nginx/ssl \
-		&& openssl req -x509 -sha256 \
+RUN		openssl req -x509 -sha256 \
 		-nodes -days 365 -newkey rsa:4096 \
-		-keyout /etc/nginx/ssl/acroisie.42.fr.key \
-		-out /etc/nginx/ssl/acroisie.42.fr.crt -subj /C=FR
+		-keyout /etc/ssl/private/acroisie.key \
+		-out /etc/ssl/certs/acroisie.crt -subj /C=FR
+
+COPY	./conf/nginx.conf /etc/nginx/conf.d/
 
 EXPOSE	443 9000
 

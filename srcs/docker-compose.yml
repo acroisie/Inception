@@ -3,6 +3,8 @@ version:  "3.9"
 networks:
 # --------------Network------------- #
   inception:
+    name: inception
+    driver: bridge
 
 volumes:
 # --------------Volumes------------- #
@@ -53,9 +55,9 @@ services:
     ports:
       - 443
       - 9000
-    restart:  always
     depends_on:
       - wordpress
+    restart:  always
 
 # -------------Wordpress------------ #
   wordpress:
@@ -68,6 +70,7 @@ services:
         - MYSQL_USER
         - MYSQL_PASSWORD
         - MYSQL_HOST
+        - DOMAIN_NAME
         - WP_SITE_TITLE
         - WP_ADMIN
         - WP_ADMIN_PASSWORD
@@ -81,4 +84,4 @@ services:
       - 9000
     depends_on:
       - mariadb
-    # restart:  always
+    restart:  always
