@@ -68,6 +68,10 @@ services:
         - MYSQL_USER
         - MYSQL_PASSWORD
         - MYSQL_HOST
+        - WP_SITE_TITLE
+        - WP_ADMIN
+        - WP_ADMIN_PASSWORD
+        - WP_ADMIN_EMAIL
     volumes:
       - WordPress:/var/www/html
     networks:
