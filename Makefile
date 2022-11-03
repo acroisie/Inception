@@ -2,7 +2,7 @@ all : volumes
 	docker-compose --project-directory srcs up -d --build
 
 # linux:
-# 	echo "127.0.0.1 vchevill.42.fr" >> /etc/hosts // Bricoler les var pour raccourci
+# 	echo "127.0.0.1 acroisie.42.fr" >> /etc/hosts // Bricoler les var pour raccourci
 
 down :
 	docker-compose --project-directory srcs down -v
@@ -17,7 +17,6 @@ clean: down
 fclean: down
 	docker system prune -af --volumes
 	rm -rf /Users/arnaud/home/$(USER)/data/*
-	docker volume rm $(docker volume ls -q)
 
 re: fclean all
 

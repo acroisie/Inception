@@ -42,6 +42,7 @@ services:
       - inception
     ports:
       - 3306
+    init: true
     restart:  always
 
 # ---------------NginX-------------- #
@@ -77,8 +78,6 @@ services:
         - WP_ADMIN
         - WP_ADMIN_PASSWORD
         - WP_ADMIN_EMAIL
-    env_file:
-      - .env
     volumes:
       - WordPress:/var/www/html
     networks:
