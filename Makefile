@@ -12,12 +12,12 @@ volumes:
 	mkdir -p /Users/arnaud/home/$(USER)/data/DB
 
 clean: down
-	docker system prune -af
+	docker system prune -af --volumes
 
 fclean: down
 	docker system prune -af --volumes
 	rm -rf /Users/arnaud/home/$(USER)/data/*
 
-re: fclean all
+re: clean all
 
 .PHONY:	all down mariadb volumes clean fclean re

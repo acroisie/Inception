@@ -68,16 +68,8 @@ services:
     container_name: wordpress
     build:
       context: ./requirements/wordpress/
-      args:
-        - MYSQL_DATABASE
-        - MYSQL_USER
-        - MYSQL_PASSWORD
-        - MYSQL_HOST
-        - DOMAIN_NAME
-        - WP_SITE_TITLE
-        - WP_ADMIN
-        - WP_ADMIN_PASSWORD
-        - WP_ADMIN_EMAIL
+    env_file:
+      - .env
     volumes:
       - WordPress:/var/www/html
     networks:
