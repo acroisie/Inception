@@ -17,6 +17,7 @@ clean: down
 fclean: down
 	docker system prune -af --volumes
 	rm -rf /Users/arnaud/home/$(USER)/data/*
+	docker volume rm $(docker volume ls -q)
 
 re: fclean all
 

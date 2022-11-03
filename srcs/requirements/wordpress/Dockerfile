@@ -32,14 +32,15 @@ RUN		mv /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-
 		&&	sed -i "s|password_here|$MYSQL_PASSWORD|" /var/www/html/wordpress/wp-config.php \
 		&&	sed -i "s|localhost|$MYSQL_HOST|" /var/www/html/wordpress/wp-config.php
 
-RUN 	cd /var/www/html/wordpress/ \
-		wp core install --allow-root \
-		--url=$DOMAIN_NAME --title=$WP_SITE_TITLE \
-		--admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PASSWORD \
-		--admin_email=$WP_ADMIN_EMAIL
+WORKDIR "/var/www/html/wordpress/"
+
+# RUN 	wp core install --allow-root \
+# 						--url=$DOMAIN_NAME \
+# 						--title=$WP_SITE_TITLE \
+# 						--admin_user=$WP_ADMIN \
+# 						--admin_password=$WP_ADMIN_PASSWORD \
+# 						--admin_email=$WP_ADMIN_EMAIL
 
 EXPOSE	3306 9000
-
-WORKDIR "/var/www/html/wordpress/"
 
 CMD		[ "php-fpm7.3", "-F" ]
