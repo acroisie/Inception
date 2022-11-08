@@ -1,8 +1,8 @@
 all : volumes
 	docker-compose --project-directory srcs up -d --build
 
-# linux:
-# 	echo "127.0.0.1 acroisie.42.fr" >> /etc/hosts // Bricoler les var pour raccourci
+linux:
+	echo "127.0.0.1 acroisie.42.fr" >> /etc/hosts
 
 down :
 	docker-compose --project-directory srcs down -v
