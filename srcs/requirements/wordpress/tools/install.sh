@@ -22,10 +22,10 @@ then
 					--admin_password=$WP_ADMIN_PASSWORD \
 					--admin_email=$WP_ADMIN_EMAIL;
 
-	# wp user create	--allow-root \
-	# 				$WP_USER_LOGIN \
-	# 				$WP_USER_EMAIL \
-	# 				--user_pass=$WP_USER_PASSWORD;
+	wp user create	--allow-root \
+					$WP_USER_LOGIN \
+					$WP_USER_EMAIL \
+					--user_pass=$WP_USER_PASSWORD;
 fi
 
 php-fpm7.3 -F;
