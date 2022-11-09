@@ -26,6 +26,8 @@ then
 					$WP_USER_LOGIN \
 					$WP_USER_EMAIL \
 					--user_pass=$WP_USER_PASSWORD;
+					
+	# chown -R		www-data:www-data /var/www/html; // Linux case
 fi
 
 php-fpm7.3 -F;
