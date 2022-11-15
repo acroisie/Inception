@@ -8,15 +8,15 @@ down :
 	docker-compose --project-directory srcs down -v
 
 volumes:
-	mkdir -p /Users/arnaud/home/$(USER)/data/WordPress
-	mkdir -p /Users/arnaud/home/$(USER)/data/DB
+	mkdir -p /home/$(USER)/data/WordPress
+	mkdir -p /home/$(USER)/data/DB
 
 clean: down
 	docker system prune -af --volumes
 
 fclean: down
 	docker system prune -af --volumes
-	rm -rf /Users/arnaud/home/$(USER)/data/*
+	rm -rf /home/$(USER)/data/*
 
 re: clean all
 
